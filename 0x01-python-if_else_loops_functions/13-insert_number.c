@@ -1,51 +1,35 @@
-#include "lists.h"
 #include <stdlib.h>
-#include <stdio.h>
-
+#include "lists.h"
 /**
- *insert_node - inserts number in sorte list
- *@head: addres of head
- *@number: number to insert
- *
- *Return: on success addres of new node, NULL if failed
- */
+  * insert_node - inserts a number into a sorted singly linked list.
+  * @head: pointer to the pointer of the list.
+  * @number: number to be inserted.
+  *
+  * Return: address f the new node or NULL if it failed.
+  */
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *current = *head;
-	listint_t *temp;
-	listint_t *new = malloc(sizeof(listint_t));
+	listint_t *before, *new_Node;
 
-	if(!head)
-		return (NULL);
-
-	if(!new)
-		return (NULL);
-
-	new->n = number;
-
-	if (*head == NULL || number < (*head)->n)
+	new_Node = malloc(sizeof(listint_t));
+	if (new_Node != NULL)
 	{
-		temp = *head;
-		*head = new;
-		new->next = temp;
-		return (new);
-	}
-	while (current)
-	{
-		if (current->next == NULL)
+		new_Node->n = number;
+		if (*head == NULL || (*head)->n >= new_Node->n)
 		{
-			current->next == new;
-			return (new);
+			new_Node->next = *head;
+			*head = new_Node;
+			return (new_Node);
 		}
-		if (number < current->next->)
+		else
 		{
-			temp = current->next;
-			current->next = new;
-			new->next = temp;
-			return (new);
+			before = *head;
+			while (before->next != NULL && before->next->n < new_Node->n)
+				before = before->next;
+			new_Node->next = before->next;
+			before->next = new_Node;
+			return (new_Node);
 		}
-		current = current->next;
 	}
-	free(new);
 	return (NULL);
 }
