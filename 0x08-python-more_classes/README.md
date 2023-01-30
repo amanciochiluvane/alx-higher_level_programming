@@ -1,5 +1,4 @@
 # Python - More Classes and Objects
-In this project I get to practice more on classes and objects
 ## General
 * What is a class
 * What is an object and an instance
@@ -38,5 +37,3 @@ In this project I get to practice more on classes and objects
 |'7-rectangle.py' | Defines a Recatngle class based on 6-rectangle.py | [7-main.py](./tests/7-main.py) |
 |'8-rectangle.py' | Defines a Recatngle class based on 7-rectangle.py | [8-main.py](./tests/8-main.py) |
 |'9-rectangle.py' | Defines a Recatngle class based on 8-rectangle.py | [9-main.py](./tests/9-main.py) |
-
-Author: Sangwani P. Zyambo
