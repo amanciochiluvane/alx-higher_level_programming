@@ -7,8 +7,8 @@ fi
 
 url="$1"
 
-response=$(curl -s "$url")  # Get the response body only
-content_length=$(python -c "import sys; print(len(sys.stdin.read()))" <<< "$response")
+response=$(curl -sI "$url")  # Get headers only
+content_length=$(echo "$response" | grep -i Content-Length | awk '{print $2}')
 
 if [ -z "$content_length" ]; then
     echo "Unable to get content length"
@@ -16,4 +16,5 @@ if [ -z "$content_length" ]; then
 fi
 
 echo "Size of response body: $content_length bytes"
+
 
